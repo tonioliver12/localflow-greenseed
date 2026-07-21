@@ -55,6 +55,17 @@ export interface SiteConfig {
     // desde Google Places; el resto de stats se define a mano por cliente.
     stats: { label: string; value: string }[];
   };
+  testimonials: {
+    // Reseñas escritas a mano para clientes que todavía tienen pocas (o
+    // ninguna) reseña en Google. Si este array tiene elementos, Testimonials
+    // los muestra directamente y NO se llama a la Google Places API (ni el
+    // fetch de reseñas en app/page.tsx, ni el rating en TrustBar).
+    // Al no venir de Google no traen una puntuación individual, así que la
+    // card se renderiza sin estrellas.
+    // Déjalo como array vacío para volver al comportamiento por defecto:
+    // reseñas reales vía Google Reviews (Places API + siteConfig.google.placeId).
+    manual: { author: string; text: string }[];
+  };
   services: {
     title: string;
     description: string;
@@ -86,13 +97,12 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
   business: {
-    name: "Emerald Estate",
-    tagline: "Bespoke garden design in Dublin",
-    phone: "+353 1 000 0000",
-    email: "hello@emeraldestate.ie",
-    whatsapp: "+353850000000",
-    address: "Sandyford Business Park, Dublin 18",
-    serviceAreas: ["Blackrock", "Dalkey", "Foxrock", "Dun Laoghaire", "Malahide"],
+    name: "Greenseed Landscapes",
+    tagline: "Bespoke landscape design & build in Dublin",
+    phone: "087 972 4475",
+    email: "info@greenseed.ie",
+    address: "13 Grosvenor Road, Rathmines, Dublin 6",
+    serviceAreas: ["Rathmines", "Rathfarnham", "Dundrum", "Sandymount", "Churchtown", "Castleknock"],
   },
   google: {
     placeId: "REPLACE_WITH_GOOGLE_PLACE_ID",
@@ -103,19 +113,19 @@ export const siteConfig: SiteConfig = {
       surface: "#ffffff",
       ink: "#1a1a1a",
       inkSoft: "#6b6b6b",
-      primary: "#2d2d2d",
-      accent: "#c9a961",
+      primary: "#1f3a2d",
+      accent: "#a8987d",
       border: "#e5e5e3",
     },
     fontPreset: "elegante",
   },
   hero: {
-    eyebrow: "Garden Design Studio · Dublin",
-    headline: "Gardens as *quiet* architecture",
+    eyebrow: "RATHMINES, DUBLIN — LANDSCAPE STUDIO",
+    headline: "Gardens built to *outlast* the trends",
     subheadline:
-      "We shape outdoor spaces across Dublin with bespoke design, from the first sketch to the very last plant.",
-    ctaLabel: "Get a Quote",
-    image: "https://placehold.co/1920x1280/2d2d2d/fafaf9.png?text=Hero",
+      "For over a decade, we've designed, built and maintained gardens across Dublin — combining hands-on craftsmanship with a personalised service, from first sketch to final planting.",
+    ctaLabel: "Start your garden",
+    image: "https://placehold.co/1920x1080/1f3a2d/fafaf9.png?text=Greenseed+Landscapes",
   },
   trustBar: {
     rotatingWords: ["unique", "lasting", "bespoke", "sustainable"],
@@ -125,68 +135,91 @@ export const siteConfig: SiteConfig = {
       { label: "Service area", value: "Dublin" },
     ],
   },
+  testimonials: {
+    manual: [
+      {
+        author: "Paul D. Griffin, Dip. Arch.",
+        text: "Clear, precise proposals and a landscaping consultant I have no hesitation recommending to clients.",
+      },
+      {
+        author: "Joe Harrington",
+        text: "Professional, reliable and flexible — they listened to our brief and delivered on time and on budget.",
+      },
+      {
+        author: "Carmel Hennessy",
+        text: "Exceptional hardscaping quality, extensive plant knowledge, and thorough follow-up after the work was done.",
+      },
+    ],
+  },
   services: [
     {
       title: "Garden Design",
-      description: "Complete bespoke projects, from the first sketch to the very last plant.",
-      image: "https://placehold.co/800x1000/2d2d2d/fafaf9.png?text=Design",
+      description: "Bespoke garden plans tailored to how you actually want to live outdoors.",
+      image: "https://placehold.co/800x1000/1f3a2d/fafaf9.png?text=Garden+Design",
     },
     {
-      title: "Hardscaping",
-      description: "Paths, patios and walls in natural stone and timber.",
-      image: "https://placehold.co/800x1000/6b6b6b/fafaf9.png?text=Hardscaping",
+      title: "Building",
+      description: "Hardscaping, planting and construction, carried out by our own hands-on team.",
+      image: "https://placehold.co/800x1000/33513f/fafaf9.png?text=Building",
     },
     {
       title: "Maintenance",
-      description: "Regular upkeep to keep the garden looking impeccable all year round.",
-      image: "https://placehold.co/800x1000/c9a961/1a1a1a.png?text=Maintenance",
+      description: "Ongoing care to keep your garden thriving through every season.",
+      image: "https://placehold.co/800x1000/8a9a5b/1a1a1a.png?text=Maintenance",
     },
   ],
   portfolio: [
     {
-      slug: "blackrock-contemporary-garden",
-      title: "Contemporary Garden — Blackrock",
+      slug: "hawthorn-lodge-castleknock",
+      title: "Hawthorn Lodge, Castleknock",
       description:
-        "A full redesign of a suburban plot in Blackrock, pairing clean lines with lush, layered planting. We replaced an overgrown lawn with structured hardscaping, a sunken seating area, and drought-resistant borders for a garden that stays low-maintenance yet feels alive year-round.",
+        "A curved garden reimagined with a sandstone patio, raised planters and new fencing for privacy.",
       beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
-      afterImage: "https://placehold.co/1200x800/2d2d2d/fafaf9.png?text=After",
-      coverImage: "https://placehold.co/1200x800/2d2d2d/fafaf9.png?text=Blackrock",
+      afterImage: "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=After",
+      coverImage: "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Hawthorn+Lodge",
       gallery: [
-        "https://placehold.co/1200x800/2d2d2d/fafaf9.png?text=Photo+1",
-        "https://placehold.co/1200x800/2d2d2d/fafaf9.png?text=Photo+2",
-        "https://placehold.co/1200x800/2d2d2d/fafaf9.png?text=Photo+3",
+        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+1",
+        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+2",
+        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+3",
       ],
     },
     {
-      slug: "dalkey-georgian-garden",
-      title: "Georgian Garden — Dalkey",
+      slug: "strand-road-sandymount",
+      title: "Strand Road, Sandymount",
       description:
-        "A period-sensitive restoration for a Georgian home in Dalkey, blending formal structure with soft, seasonal borders. Reclaimed stone paths and clipped hedging tie the new layout back to the house's original character.",
+        "A full design-and-build project completed as part of a home refurbishment, finished on time and on budget.",
       beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
-      afterImage: "https://placehold.co/1200x800/6b6b6b/fafaf9.png?text=After",
-      coverImage: "https://placehold.co/1200x800/6b6b6b/fafaf9.png?text=Dalkey",
+      afterImage: "https://placehold.co/1200x800/33513f/fafaf9.png?text=After",
+      coverImage: "https://placehold.co/1200x800/33513f/fafaf9.png?text=Strand+Road",
       gallery: [
-        "https://placehold.co/1200x800/6b6b6b/fafaf9.png?text=Photo+1",
-        "https://placehold.co/1200x800/6b6b6b/fafaf9.png?text=Photo+2",
+        "https://placehold.co/1200x800/33513f/fafaf9.png?text=Photo+1",
+        "https://placehold.co/1200x800/33513f/fafaf9.png?text=Photo+2",
+      ],
+    },
+    {
+      slug: "ballytore-road-rathfarnham",
+      title: "Ballytore Road, Rathfarnham",
+      description:
+        "A hybrid hardscape solution designed around the family's needs after a house extension.",
+      beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
+      afterImage: "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=After",
+      coverImage: "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Ballytore+Road",
+      gallery: [
+        "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Photo+1",
+        "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Photo+2",
       ],
     },
   ],
   about: {
-    heading: "About us",
+    heading: "About Greenseed",
     body:
-      "We're a landscaping studio based in Dublin, devoted to the art of the garden for more than a decade. Every project starts by listening to how our clients want to live in their outdoor space.",
-    image: "https://placehold.co/900x1100/e5e5e3/6b6b6b.png?text=Team",
+      "Greenseed Landscapes is a Dublin-based landscaping studio combining professional design training with hands-on building experience. We handle every project ourselves, end to end, so the quality of the finish is never left to chance.",
+    image: "https://placehold.co/900x1100/1f3a2d/fafaf9.png?text=Greenseed+Team",
   },
   contact: {
     heading: "Start your project",
-    subheading:
-      "We take on a limited number of projects each season to guarantee the highest quality.",
-    notifyEmail: "hello@emeraldestate.ie",
-    projectTypes: [
-      "Full garden design",
-      "Hardscaping only",
-      "Maintenance & planting",
-      "Commercial project",
-    ],
+    subheading: "Tell us about your garden and we'll get back to you to arrange a visit.",
+    notifyEmail: "info@greenseed.ie",
+    projectTypes: ["Garden design", "Build / hardscaping", "Maintenance", "Full renovation"],
   },
 };

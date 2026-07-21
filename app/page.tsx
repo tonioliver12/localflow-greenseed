@@ -1,5 +1,5 @@
 import { siteConfig } from "@/config/site.config";
-import { getGoogleReviews } from "@/lib/googlePlaces";
+import { getGoogleReviews, EMPTY_GOOGLE_REVIEWS } from "@/lib/googlePlaces";
 
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -12,7 +12,12 @@ import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default async function Home() {
-  const reviewsData = await getGoogleReviews(siteConfig.google.placeId);
+  // Con testimonios manuales configurados no hace falta gastar cuota de la
+  // Places API: Testimonials los usa directamente en vez de reseñas de Google.
+  const reviewsData =
+    siteConfig.testimonials.manual.length > 0
+      ? EMPTY_GOOGLE_REVIEWS
+      : await getGoogleReviews(siteConfig.google.placeId);
 
   return (
     <main>

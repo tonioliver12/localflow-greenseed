@@ -20,7 +20,9 @@ export interface GoogleReviewsResult {
   reviews: GoogleReview[];
 }
 
-const EMPTY_RESULT: GoogleReviewsResult = { rating: null, totalReviews: null, reviews: [] };
+// Exportado para que app/page.tsx pueda reutilizarlo cuando hay reseñas
+// manuales configuradas y no hace falta llamar a la Places API.
+export const EMPTY_GOOGLE_REVIEWS: GoogleReviewsResult = { rating: null, totalReviews: null, reviews: [] };
 
 export async function getGoogleReviews(placeId: string): Promise<GoogleReviewsResult> {
   const apiKey = process.env.GOOGLE_PLACES_API_KEY;
@@ -28,7 +30,7 @@ export async function getGoogleReviews(placeId: string): Promise<GoogleReviewsRe
   if (!apiKey || !placeId || placeId === "REPLACE_WITH_GOOGLE_PLACE_ID") {
     // Sin key o sin Place ID configurado todavía: no rompemos la build,
     // simplemente no mostramos reseñas reales (útil en desarrollo local).
-    return EMPTY_RESULT;
+    return EMPTY_GOOGLE_REVIEWS;
   }
 
   const url = new URL("https://maps.googleapis.com/maps/api/place/details/json");
@@ -44,10 +46,10 @@ export async function getGoogleReviews(placeId: string): Promise<GoogleReviewsRe
       next: { revalidate: 60 * 60 * 6 },
     });
 
-    if (!res.ok) return EMPTY_RESULT;
+    if (!res.ok) return EMPTY_GOOGLE_REVIEWS;
 
     const data = await res.json();
-    if (data.status !== "OK" || !data.result) return EMPTY_RESULT;
+    if (data.status !== "OK" || !data.result) return EMPTY_GOOGLE_REVIEWS;
 
     const reviews: GoogleReview[] = (data.result.reviews ?? []).map((r: any) => ({
       authorName: r.author_name,
@@ -63,6 +65,6 @@ export async function getGoogleReviews(placeId: string): Promise<GoogleReviewsRe
       reviews,
     };
   } catch {
-    return EMPTY_RESULT;
+    return EMPTY_GOOGLE_REVIEWS;
   }
 }

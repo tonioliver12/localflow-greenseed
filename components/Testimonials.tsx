@@ -7,6 +7,36 @@ interface TestimonialsProps {
 }
 
 export default function Testimonials({ reviewsData }: TestimonialsProps) {
+  const manualTestimonials = siteConfig.testimonials.manual;
+
+  // Modo manual: útil para cualquier cliente que todavía tenga pocas (o
+  // ninguna) reseña en Google. Si siteConfig.testimonials.manual trae
+  // elementos, se muestran esas tarjetas directamente y NUNCA se llega a
+  // pedir datos a la Google Places API (ver app/page.tsx, que ya evita el
+  // fetch en ese caso). Al no venir de Google no hay una puntuación
+  // individual por testimonio, así que la card se pinta sin estrellas.
+  if (manualTestimonials.length > 0) {
+    return (
+      <section id="testimonios" className="py-24">
+        <div className="mx-auto max-w-container px-6 md:px-10">
+          <h2 className="font-heading text-3xl font-semibold text-ink md:text-4xl">
+            What our clients say
+          </h2>
+
+          <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
+            {manualTestimonials.map((testimonial, i) => (
+              <div key={`${testimonial.author}-${i}`} className="border border-border bg-surface p-8">
+                <p className="font-body text-ink-soft">“{testimonial.text}”</p>
+                <p className="mt-6 font-body text-sm font-semibold text-ink">{testimonial.author}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Comportamiento por defecto: reseñas reales de Google Reviews.
   const { reviews, rating, totalReviews } = reviewsData;
 
   if (reviews.length === 0) {
