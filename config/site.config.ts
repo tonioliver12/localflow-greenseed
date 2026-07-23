@@ -125,7 +125,7 @@ export const siteConfig: SiteConfig = {
     subheadline:
       "For over a decade, we've designed, built and maintained gardens across Dublin — combining hands-on craftsmanship with a personalised service, from first sketch to final planting.",
     ctaLabel: "Start your garden",
-    image: "https://placehold.co/1920x1080/1f3a2d/fafaf9.png?text=Greenseed+Landscapes",
+    image: "/images/hero/hero.jpg",
   },
   trustBar: {
     rotatingWords: ["unique", "lasting", "bespoke", "sustainable"],
@@ -174,13 +174,12 @@ export const siteConfig: SiteConfig = {
       title: "Hawthorn Lodge, Castleknock",
       description:
         "A curved garden reimagined with a sandstone patio, raised planters and new fencing for privacy.",
-      beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
-      afterImage: "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=After",
-      coverImage: "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Hawthorn+Lodge",
+      beforeImage: "/images/portfolio/hawthorn-lodge-castleknock/before.jpg",
+      afterImage: "/images/portfolio/hawthorn-lodge-castleknock/after.jpg",
+      coverImage: "/images/portfolio/hawthorn-lodge-castleknock/after.jpg",
       gallery: [
-        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+1",
-        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+2",
-        "https://placehold.co/1200x800/1f3a2d/fafaf9.png?text=Photo+3",
+        "/images/portfolio/hawthorn-lodge-castleknock/gallery-1.jpg",
+        "/images/portfolio/hawthorn-lodge-castleknock/gallery-2.jpg",
       ],
     },
     {
@@ -188,12 +187,12 @@ export const siteConfig: SiteConfig = {
       title: "Strand Road, Sandymount",
       description:
         "A full design-and-build project completed as part of a home refurbishment, finished on time and on budget.",
-      beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
-      afterImage: "https://placehold.co/1200x800/33513f/fafaf9.png?text=After",
-      coverImage: "https://placehold.co/1200x800/33513f/fafaf9.png?text=Strand+Road",
+      beforeImage: "/images/portfolio/strand-road-sandymount/before.jpg",
+      afterImage: "/images/portfolio/strand-road-sandymount/after.jpg",
+      coverImage: "/images/portfolio/strand-road-sandymount/after.jpg",
       gallery: [
-        "https://placehold.co/1200x800/33513f/fafaf9.png?text=Photo+1",
-        "https://placehold.co/1200x800/33513f/fafaf9.png?text=Photo+2",
+        "/images/portfolio/strand-road-sandymount/gallery-1.jpg",
+        "/images/portfolio/strand-road-sandymount/gallery-2.jpg",
       ],
     },
     {
@@ -201,12 +200,12 @@ export const siteConfig: SiteConfig = {
       title: "Ballytore Road, Rathfarnham",
       description:
         "A hybrid hardscape solution designed around the family's needs after a house extension.",
-      beforeImage: "https://placehold.co/1200x800/e5e5e3/6b6b6b.png?text=Before",
-      afterImage: "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=After",
-      coverImage: "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Ballytore+Road",
+      beforeImage: "/images/portfolio/ballytore-road-rathfarnham/before.jpg",
+      afterImage: "/images/portfolio/ballytore-road-rathfarnham/after.jpg",
+      coverImage: "/images/portfolio/ballytore-road-rathfarnham/after.jpg",
       gallery: [
-        "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Photo+1",
-        "https://placehold.co/1200x800/8a9a5b/1a1a1a.png?text=Photo+2",
+        "/images/portfolio/ballytore-road-rathfarnham/gallery-1.jpg",
+        "/images/portfolio/ballytore-road-rathfarnham/gallery-2.jpg",
       ],
     },
   ],
